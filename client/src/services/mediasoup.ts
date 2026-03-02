@@ -6,11 +6,12 @@ const log = (msg: string) => console.log(`%c[SFU]: ${msg}`, 'color: #25D366; fon
 
 export const socket: Socket = io('http://localhost:3000');
 
-export let device: Device;
+// Initialize the instance immediately
+export const device = new Device();
 
 export const loadDevice = async (routerRtpCapabilities: any) => {
   try {
-    device = new Device();
+    
 
     // Check if the browser supports the codecs the server provided
     await device.load({ routerRtpCapabilities });
